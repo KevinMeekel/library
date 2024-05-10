@@ -1,0 +1,76 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.books-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    background-color: gainsboro;
+    height: calc(100vh - 16px);
+    width: 100%;
+    gap: 20px;
+    padding: 20px;
+}
+
+.book {
+    background-color: rgb(205, 179, 139);
+    border-radius: 10px;
+    border: 3px solid black;
+    padding: 20px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.book h2 {
+    font-size: 28px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.book p {
+    font-size: 20px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+#new-book-btn {
+    padding: 10px;
+    font-size: 28px;
+    margin-bottom: 28px;
+}
+
+#add-book-form {
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    font-size: 24px;
+}
+
+input, .read-div {
+    height: 28px;
+    font-size: 24px;
+}
+
+.submit {
+    padding: 5px;
+    font-size: inherit;
+}
+
+.read-div {
+    display: flex;
+    align-items: center;
+    height: 28px;
+    font-size: 24px;
+    margin-bottom: 20px; 
+}
+
+.read-div input {
+    width: 28px;
+}
