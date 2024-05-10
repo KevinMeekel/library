@@ -70,12 +70,11 @@ Library.prototype.removeBook = function(index) {
 
 const library = new Library();
 
-// Function to show the new book form
 function showNewBookForm() {
     document.getElementById('new-book-form').style.display = 'block';
 }
 
-// Function to handle form submission
+// Handle form submission
 document.getElementById('add-book-form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent form submission to a server
 
@@ -88,12 +87,9 @@ document.getElementById('add-book-form').addEventListener('submit', function(eve
     library.addBook(newBook);
     library.displayBooks();
 
-    // Hide the form after submission
     document.getElementById('new-book-form').style.display = 'none';
 });
 
-// Event listener for the "New Book" button
 document.getElementById('new-book-btn').addEventListener('click', showNewBookForm);
 
-// Initial display of books
 library.displayBooks();
