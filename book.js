@@ -6,6 +6,35 @@ function Book(title, author, pages, read) {
 }
 
 // FORM VAL
+function requireTitle() {
+    const titleInput = document.getElementById('title');
+  
+    // Highlight the title input
+    titleInput.style.border = '2px solid red';
+    titleInput.style.backgroundColor = '#ffe6e6'; // Light red background for emphasis
+  
+    // Add a helper text to inform the user
+    let errorText = document.querySelector('#title-error');
+    if (!errorText) {
+        errorText = document.createElement('span');
+        errorText.id = 'title-error';
+        errorText.textContent = 'Title is required';
+        errorText.style.color = 'red';
+        errorText.style.fontSize = '16px';
+        errorText.style.marginTop = '5px';
+        errorText.style.display = 'block';
+        titleInput.parentNode.appendChild(errorText); // Add error text below the input
+    }
+  
+    // Remove highlight and error text when user starts typing
+    titleInput.addEventListener('input', () => {
+        titleInput.style.border = '';
+        titleInput.style.backgroundColor = '';
+        if (errorText) errorText.remove();
+    });
+  }
+// FORM VAL
+// Title is required, author and pages default to 'unknown', read is 'no' by default.
 
 function Library() {
     this.books = [];
@@ -26,10 +55,10 @@ function Library() {
             titleElement.textContent = book.title;
 
             const authorElement = document.createElement('p');
-            authorElement.textContent = `Author: ${book.author}`;
+            authorElement.textContent = `Author: ${book.author ? book.author : "Unknown"}`;
 
             const pagesElement = document.createElement('p');
-            pagesElement.textContent = `Pages: ${book.pages}`;
+            pagesElement.textContent = `Pages: ${book.pages ? book.pages : "Unknown"}`;
 
             const readElement = document.createElement('p');
             readElement.textContent = `Read: ${book.read ? 'Yes' : 'No'}`;
@@ -86,6 +115,12 @@ document.getElementById('add-book-form').addEventListener('submit', function(eve
     const read = document.getElementById('read').checked;
 
     const newBook = new Book(title, author, pages, read);
+
+    if (newBook.title === '') {
+        requireTitle();
+        return;
+    };
+
     library.addBook(newBook);
     library.displayBooks();
 
